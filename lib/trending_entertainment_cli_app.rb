@@ -1,5 +1,2 @@
-require "trending_entertainment_cli_app/version"
-
-module TrendingEntertainmentCliApp
-  # Your code goes here...
-end
+require_relative "./trending_entertainment_cli_app/version"
+require_relative "./trending_entertainment_cli_app/cli"
