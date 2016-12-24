@@ -6,7 +6,7 @@ require 'trending_entertainment_cli_app/version'
 Gem::Specification.new do |spec|
   spec.name          = "trending_entertainment_cli_app"
   spec.version       = TrendingEntertainmentCliApp::VERSION
-  spec.authors       = ["TODO: Write your name"]
+  spec.authors       = ["Krishel Lasam"]
   spec.email         = ["krishel.lasam@gmail.com"]
 
   spec.summary       = %q{TODO: Write a short summary, because Rubygems requires one.}

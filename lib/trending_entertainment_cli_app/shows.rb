@@ -3,7 +3,7 @@ class TrendingEntertainmentCliApp::Shows
   @@trendshows = []
   @@anticipshows = []
 
-  def initialize(title)
+  def initialize(title = nil, year = nil)
     @title = title
     @year = year
   end
@@ -14,6 +14,11 @@ class TrendingEntertainmentCliApp::Shows
 
   def self.anticipshows
     @@anticipshows
+  end
+
+  def self.scrape_trendshows
+    doc = Nokogiri::HTML(open("https://trakt.tv/shows/trending"))
+
   end
 
   def self.trending_shows
