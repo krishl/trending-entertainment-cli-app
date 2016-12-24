@@ -25,13 +25,27 @@ class TrendingEntertainmentCliApp::CLI
       answer = gets.chomp
       case answer
       when "1"
+        TrendingEntertainmentCliApp::Shows.shows_clear
         TrendingEntertainmentCliApp::Shows.scrape_trendshows
         puts "Type the number of the show for more details. Alternatively, type 'back' to go back to the main menu or 'exit' to exit."
-        answer = gets.chomp
+        number = gets.chomp
+        if number.to_i.between?(1, 37)
+          TrendingEntertainmentCliApp::Shows.selected_tshow_to_url(number)
+        else
+          puts "Please enter a valid number!"
+          shows
+        end
       when "2"
+        TrendingEntertainmentCliApp::Shows.shows_clear
         TrendingEntertainmentCliApp::Shows.scrape_anticipshows
         puts "Type the number of the show for more details. Alternatively, type 'back' to go back to the main menu or 'exit' to exit."
-        answer = gets.chomp
+        number = gets.chomp
+        if number.to_i.between?(1, 37)
+          TrendingEntertainmentCliApp::Shows.selected_ashow_to_url(number)
+        else
+          puts "Please enter a valid number!"
+          shows
+        end
       when "back"
         main_menu
       when "exit"
@@ -52,11 +66,23 @@ class TrendingEntertainmentCliApp::CLI
       when "1"
         TrendingEntertainmentCliApp::Movies.scrape_trendmovies
         puts "Type the number of the movie for more details. Alternatively, type 'back' to go back to the main menu or 'exit' to exit."
-        answer = gets.chomp
+        number = gets.chomp
+        if number.to_i.between?(1, 37)
+          TrendingEntertainmentCliApp::Movies.selected_tmovie_to_url(number)
+        else
+          puts "Please enter a valid number!"
+          movies
+        end
       when "2"
         TrendingEntertainmentCliApp::Movies.scrape_anticipmovies
         puts "Type the number of the show for more details. Alternatively, type 'back' to go back to the main menu or 'exit' to exit."
-        answer = gets.chomp
+        number = gets.chomp
+        if number.to_i.between?(1, 37)
+          TrendingEntertainmentCliApp::Movies.selected_tmovie_to_url(number)
+        else
+          puts "Please enter a valid number!"
+          movies
+        end
       when "back"
         main_menu
       when "exit"
@@ -68,6 +94,15 @@ class TrendingEntertainmentCliApp::CLI
   end
 
   def farewell
-    abort("Have a nice day!")
+    abort("Have a great day!")
+  end
+
+  def show_conversion_setup(number)
+    if number.to_i.between?(1, 37)
+      TrendingEntertainmentCliApp::Shows.selected_show_to_url(number)
+    else
+      puts "Please enter a valid number!"
+      shows
+    end
   end
 end

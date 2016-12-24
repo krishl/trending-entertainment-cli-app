@@ -35,4 +35,12 @@ class TrendingEntertainmentCliApp::Movies
       puts "#{index}. #{anticipmovie}"
     end
   end
+
+  def self.selected_tmovie_to_url(number)
+    puts trendmovies[number.to_i-1]
+  end
+
+  def self.selected_amovie_to_url(number)
+    puts anticipmovies[number.to_i-1]
+  end
 end

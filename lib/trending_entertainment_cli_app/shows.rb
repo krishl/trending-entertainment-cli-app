@@ -10,6 +10,11 @@ class TrendingEntertainmentCliApp::Shows
     @@anticipshows
   end
 
+  def self.shows_clear
+    trendshows.clear
+    anticipshows.clear
+  end
+
   def self.scrape_trendshows
     trendshow = self.new
     doc = Nokogiri::HTML(open("https://trakt.tv/shows/trending"))
@@ -34,5 +39,13 @@ class TrendingEntertainmentCliApp::Shows
     anticipshows.each.with_index(1) do |anticipshow, index|
       puts "#{index}. #{anticipshow}"
     end
+  end
+
+  def self.selected_tshow_to_url(number)
+    puts trendshows[number.to_i-1]
+  end
+
+  def self.selected_ashow_to_url(number)
+    puts anticipshows[number.to_i-1]
   end
 end
