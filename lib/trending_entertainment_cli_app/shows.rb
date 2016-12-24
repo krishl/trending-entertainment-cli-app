@@ -1,5 +1,4 @@
 class TrendingEntertainmentCliApp::Shows
-  attr_accessor :title, :year, :release_date, :url
   @@trendshows = []
   @@anticipshows = []
 
@@ -28,9 +27,10 @@ class TrendingEntertainmentCliApp::Shows
     anticipshow = self.new
     doc = Nokogiri::HTML(open("https://trakt.tv/shows/anticipated"))
     doc.search("div.titles h3").map do |element|
+      anticipshow = element.text
       anticipshows << anticipshow
     end
-    
+
     anticipshows.each.with_index(1) do |anticipshow, index|
       puts "#{index}. #{anticipshow}"
     end

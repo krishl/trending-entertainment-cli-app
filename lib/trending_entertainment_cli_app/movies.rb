@@ -1,11 +1,38 @@
 class TrendingEntertainmentCliApp::Movies
-  attr_accessor :title, :year, :rating, :release_date, :url
+  @@trendmovies = []
+  @@anticipmovies = []
 
-  def self.trending_movies
-    puts "trending shows" #placeholder
+  def self.trendmovies
+    @@trendmovies
   end
 
-  def self.anticipated_movies
-    puts "anticipated movies" #placeholder
+  def self.anticipmovies
+    @@anticipmovies
+  end
+
+  def self.scrape_trendmovies
+    trendmovie = self.new
+    doc = Nokogiri::HTML(open("https://trakt.tv/movies/trending"))
+    doc.search("div.titles h3").map do |element|
+      trendmovie = element.text
+      trendmovies << trendmovie
+    end
+
+    trendmovies.each.with_index(1) do |trendmovie, index|
+      puts "#{index}. #{trendmovie}"
+    end
+  end
+
+  def self.scrape_anticipmovies
+    anticipmovie = self.new
+    doc = Nokogiri::HTML(open("https://trakt.tv/movies/anticipated"))
+    doc.search("div.titles h3").map do |element|
+      anticipmovie = element.text
+      anticipmovies << anticipmovie
+    end
+
+    anticipmovies.each.with_index(1) do |anticipmovie, index|
+      puts "#{index}. #{anticipmovie}"
+    end
   end
 end

@@ -50,9 +50,13 @@ class TrendingEntertainmentCliApp::CLI
       answer = gets.chomp
       case answer
       when "1"
-        puts "trending_movies" #placeholder for Movies.trending_movies
+        TrendingEntertainmentCliApp::Movies.scrape_trendmovies
+        puts "Type the number of the movie for more details. Alternatively, type 'back' to go back to the main menu or 'exit' to exit."
+        answer = gets.chomp
       when "2"
-        puts "anticipated_movies" #placeholder for Movies.anticipated_movies
+        TrendingEntertainmentCliApp::Movies.scrape_anticipmovies
+        puts "Type the number of the show for more details. Alternatively, type 'back' to go back to the main menu or 'exit' to exit."
+        answer = gets.chomp
       when "back"
         main_menu
       when "exit"
