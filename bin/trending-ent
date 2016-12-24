@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
 
-require "../lib/trending_entertainment_cli_app"
+require "./lib/trending_entertainment_cli_app"
 
 TrendingEntertainmentCliApp::CLI.new.main_menu

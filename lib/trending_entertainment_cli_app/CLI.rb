@@ -8,7 +8,7 @@ class TrendingEntertainmentCliApp::CLI
       when "tv shows", "tv", "shows", "tvshows", "tvshow", "show"
         shows
       when "movies", "movie"
-        puts "movies" #placeholder for .movies
+        movies
       when "exit"
         farewell
       else
@@ -19,9 +19,9 @@ class TrendingEntertainmentCliApp::CLI
 
   def shows
     answer = nil
-    while answer != "back"
+    while answer != ("back" || "exit")
       puts "Would you like to (1) view currently trending TV Shows or (2) view a list of the most anticipated upcoming shows?"
-      puts "Make your selection by typing either '1' or '2'. Alternatively, type 'back' to go back to the main menu."
+      puts "Make your selection by typing either '1' or '2'. Alternatively, type 'back' to go back to the main menu or 'exit' to exit."
       answer = gets.chomp
       case answer
       when "1"
@@ -30,6 +30,29 @@ class TrendingEntertainmentCliApp::CLI
         puts "anticipated_shows" #placeholder for Shows.anticipated_shows
       when "back"
         main_menu
+      when "exit"
+        farewell
+      else
+        puts "Please enter a valid input!"
+      end
+    end
+  end
+
+  def movies
+    answer = nil
+    while answer != ("back" || "exit")
+      puts "Would you like to (1) view currently trending TV movies or (2) view a list of the most anticipated upcoming movies?"
+      puts "Make your selection by typing either '1' or '2'. Alternatively, type 'back' to go back to the main menu or 'exit' to exit."
+      answer = gets.chomp
+      case answer
+      when "1"
+        puts "trending_movies" #placeholder for Movies.trending_movies
+      when "2"
+        puts "anticipated_movies" #placeholder for Movies.anticipated_movies
+      when "back"
+        main_menu
+      when "exit"
+        farewell
       else
         puts "Please enter a valid input!"
       end
@@ -37,8 +60,6 @@ class TrendingEntertainmentCliApp::CLI
   end
 
   def farewell
-    puts "Have a nice day!"
+    abort("Have a nice day!")
   end
-
-
 end
