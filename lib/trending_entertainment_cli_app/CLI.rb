@@ -25,11 +25,11 @@ class TrendingEntertainmentCliApp::CLI
       answer = gets.chomp
       case answer
       when "1"
-        TrendingEntertainmentCliApp::Shows.trending_shows
+        TrendingEntertainmentCliApp::Shows.scrape_trendshows
         puts "Type the number of the show for more details. Alternatively, type 'back' to go back to the main menu or 'exit' to exit."
         answer = gets.chomp
       when "2"
-        TrendingEntertainmentCliApp::Shows.anticipated_shows
+        TrendingEntertainmentCliApp::Shows.scrape_anticipshows
         puts "Type the number of the show for more details. Alternatively, type 'back' to go back to the main menu or 'exit' to exit."
         answer = gets.chomp
       when "back"

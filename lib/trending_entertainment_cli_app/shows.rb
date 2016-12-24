@@ -1,12 +1,7 @@
 class TrendingEntertainmentCliApp::Shows
-  attr_accessor :title, :year, :rating, :release_date, :url
+  attr_accessor :title, :year, :release_date, :url
   @@trendshows = []
   @@anticipshows = []
-
-  def initialize(title = nil, year = nil)
-    @title = title
-    @year = year
-  end
 
   def self.trendshows
     @@trendshows
@@ -17,18 +12,27 @@ class TrendingEntertainmentCliApp::Shows
   end
 
   def self.scrape_trendshows
+    trendshow = self.new
     doc = Nokogiri::HTML(open("https://trakt.tv/shows/trending"))
+    doc.search("div.titles h3").map do |element|
+      trendshow = element.text
+      trendshows << trendshow
+    end
 
-  end
-
-  def self.trending_shows
-    trendshows = ["one", "two"] #placeholder
     trendshows.each.with_index(1) do |trendshow, index|
       puts "#{index}. #{trendshow}"
     end
   end
 
-  def self.anticipated_shows
-    puts "anticipated shows" #placeholder
+  def self.scrape_anticipshows
+    anticipshow = self.new
+    doc = Nokogiri::HTML(open("https://trakt.tv/shows/anticipated"))
+    doc.search("div.titles h3").map do |element|
+      anticipshows << anticipshow
+    end
+    
+    anticipshows.each.with_index(1) do |anticipshow, index|
+      puts "#{index}. #{anticipshow}"
+    end
   end
 end
