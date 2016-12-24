@@ -1,5 +1,20 @@
 class TrendingEntertainmentCliApp::Shows
   attr_accessor :title, :year, :rating, :release_date, :url
+  @@trendshows = []
+  @@anticipshows = []
+
+  def initialize(title)
+    @title = title
+    @year = year
+  end
+
+  def self.trendshows
+    @@trendshows
+  end
+
+  def self.anticipshows
+    @@anticipshows
+  end
 
   def self.trending_shows
     trendshows = ["one", "two"] #placeholder
