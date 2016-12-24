@@ -42,10 +42,10 @@ class TrendingEntertainmentCliApp::Shows
   end
 
   def self.selected_tshow_to_url(number)
-    puts trendshows[number.to_i-1]
+    "https://trakt.tv/shows/#{trendshows[number.to_i-1].gsub(" ", "-")}"
   end
 
   def self.selected_ashow_to_url(number)
-    puts anticipshows[number.to_i-1]
+    "https://trakt.tv/shows/#{anticipshows[number.to_i-1].gsub(" ", "-")}"
   end
 end
