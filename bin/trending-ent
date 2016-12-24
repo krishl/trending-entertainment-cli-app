@@ -2,4 +2,4 @@
 
 require "../lib/trending_entertainment_cli_app"
 
-TrendingEntertainmentCliApp::CLI.new.call
+TrendingEntertainmentCliApp::CLI.new.main_menu
