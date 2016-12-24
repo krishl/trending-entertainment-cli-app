@@ -25,9 +25,9 @@ class TrendingEntertainmentCliApp::CLI
       answer = gets.chomp
       case answer
       when "1"
-        puts "trending_shows" #placeholder for Shows.trending_shows
+        TrendingEntertainmentCliApp::Shows.trending_shows
       when "2"
-        puts "anticipated_shows" #placeholder for Shows.anticipated_shows
+        TrendingEntertainmentCliApp::Shows.anticipated_shows
       when "back"
         main_menu
       when "exit"
