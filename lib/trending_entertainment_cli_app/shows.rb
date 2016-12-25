@@ -19,8 +19,7 @@ class TrendingEntertainmentCliApp::Shows
     trendshow = self.new
     doc = Nokogiri::HTML(open("https://trakt.tv/shows/trending"))
     doc.search("div.titles h3").map do |element|
-      trendshow = element.text
-      trendshows << trendshow
+      trendshows = element.text
     end
 
     trendshows.each.with_index(1) do |trendshow, index|

@@ -26,7 +26,7 @@ class TrendingEntertainmentCliApp::CLI
       case answer
       when "1"
         TrendingEntertainmentCliApp::Shows.shows_clear
-        TrendingEntertainmentCliApp::Shows.scrape_trendshows
+        TrendingEntertainmentCliApp::IndexScraper.scrape_index
         puts "Type the number of the show for more details. Alternatively, type 'back' to go back to the main menu or 'exit' to exit."
         number = gets.chomp
         if number.to_i.between?(1, 37)
