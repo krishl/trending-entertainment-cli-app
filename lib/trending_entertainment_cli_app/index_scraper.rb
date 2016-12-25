@@ -23,7 +23,7 @@ class TrendingEntertainmentCliApp::IndexScraper
     index.css("div.titles h3").each do |element|
       individual = self.new
       individual.name = element.text.chomp.gsub(/\s\d\d\d\d$/, "")
-      individual.year = element.text.chomp.split(" ")[-1]
+      individual.year = element.text.chomp.gsub("#{individual.name} ", "").gsub("#{individual.name}", "")
       individual.url = element.text.chomp.gsub(" ", "-").gsub("'", "-").gsub("--", "-")
     end
 
