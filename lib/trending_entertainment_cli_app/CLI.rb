@@ -25,6 +25,7 @@ class TrendingEntertainmentCliApp::CLI
       answer = gets.chomp
       case answer
       when "1"
+        puts "--- TRENDING TV SHOWS ---"
         TrendingEntertainmentCliApp::Shows.all_clear
         TrendingEntertainmentCliApp::Shows.scrape_index("https://trakt.tv/shows/trending")
         puts "Type the number of the show for more details. Alternatively, type 'back' to go back to the main menu or 'exit' to exit."
@@ -40,6 +41,7 @@ class TrendingEntertainmentCliApp::CLI
           shows
         end
       when "2"
+        puts "--- MOST ANTICIPATED TV SHOWS ---"
         TrendingEntertainmentCliApp::Shows.all_clear
         TrendingEntertainmentCliApp::Shows.scrape_index("https://trakt.tv/shows/anticipated")
         puts "Type the number of the show for more details. Alternatively, type 'back' to go back to the main menu or 'exit' to exit."
@@ -72,6 +74,7 @@ class TrendingEntertainmentCliApp::CLI
       answer = gets.chomp
       case answer
       when "1"
+        puts "--- TRENDING MOVIES ---"
         TrendingEntertainmentCliApp::Movies.all_clear
         TrendingEntertainmentCliApp::Movies.scrape_index("https://trakt.tv/movies/trending")
         puts "Type the number of the movie for more details. Alternatively, type 'back' to go back to the main menu or 'exit' to exit."
@@ -87,6 +90,7 @@ class TrendingEntertainmentCliApp::CLI
           movies
         end
       when "2"
+        puts "--- MOST ANTICIPATED MOVIES ---"
         TrendingEntertainmentCliApp::Movies.all_clear
         TrendingEntertainmentCliApp::Movies.scrape_index("https://trakt.tv/movies/anticipated")
         puts "Type the number of the show for more details. Alternatively, type 'back' to go back to the main menu or 'exit' to exit."
