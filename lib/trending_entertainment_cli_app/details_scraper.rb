@@ -8,9 +8,9 @@ class TrendingEntertainmentCliApp::DetailsScraper
     specific.year = details.css("div.col-md-10.col-md-offset-2.col-sm-9.col-sm-offset-3.mobile-title h1 span.year").text
     specific.rating = details.css("div.col-md-10.col-md-offset-2.col-sm-9.col-sm-offset-3.mobile-title h1 div.certification").text
     specific.description = details.css("div.col-lg-8.col-md-7 div#overview").text
-    specific.category = details.search("div.col-lg-8.col-md-7 li label").map{ |li| li.text}
+    specific.category = details.search("div.col-lg-8.col-md-7 li label").map{ |li| li.text}.drop(2)
     details.search("label").remove
-    specific.info = details.css("div.col-lg-8.col-md-7 li").map{ |info| info.text}#.map{ |li| li.text}
+    specific.info = details.css("div.col-lg-8.col-md-7 li").map{ |info| info.text}.drop(2)
 
     puts ""
     puts "--- TITLE ---"
@@ -26,8 +26,8 @@ class TrendingEntertainmentCliApp::DetailsScraper
     puts "#{specific.description}"
     puts ""
     puts "--- ADDITIONAL INFO ---"
-    new = specific.category.zip(specific.info).flatten.compact
-    puts new
+    combined = specific.category.zip(specific.info).flatten.compact
+    combined.each_slice(2).map { |each| puts "#{each.first} - #{each.last}"}
     puts ""
   end
 end
