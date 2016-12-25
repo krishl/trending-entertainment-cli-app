@@ -25,8 +25,8 @@ class TrendingEntertainmentCliApp::CLI
       answer = gets.chomp
       case answer
       when "1"
-        TrendingEntertainmentCliApp::Shows.shows_clear
-        TrendingEntertainmentCliApp::IndexScraper.scrape_index
+        TrendingEntertainmentCliApp::Shows.all_clear
+        TrendingEntertainmentCliApp::Shows.scrape_index("https://trakt.tv/shows/trending")
         puts "Type the number of the show for more details. Alternatively, type 'back' to go back to the main menu or 'exit' to exit."
         number = gets.chomp
         if number.to_i.between?(1, 37)
@@ -36,8 +36,8 @@ class TrendingEntertainmentCliApp::CLI
           shows
         end
       when "2"
-        TrendingEntertainmentCliApp::Shows.shows_clear
-        TrendingEntertainmentCliApp::Shows.scrape_anticipshows
+        TrendingEntertainmentCliApp::Shows.all_clear
+        TrendingEntertainmentCliApp::Shows.scrape_index("https://trakt.tv/shows/anticipated")
         puts "Type the number of the show for more details. Alternatively, type 'back' to go back to the main menu or 'exit' to exit."
         number = gets.chomp
         if number.to_i.between?(1, 37)

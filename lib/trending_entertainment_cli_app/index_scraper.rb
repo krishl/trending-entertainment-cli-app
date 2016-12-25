@@ -16,8 +16,8 @@ class TrendingEntertainmentCliApp::IndexScraper
     @@all.clear
   end
 
-  def self.scrape_index
-    index = Nokogiri::HTML(open("https://trakt.tv/shows/trending"))
+  def self.scrape_index(url)
+    index = Nokogiri::HTML(open(url))
     index.css("div.titles h3").each do |element|
       individual = self.new
       individual.name = element.text.chomp.gsub(/\d\d\d\d$/, "")
