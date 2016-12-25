@@ -1,6 +1,6 @@
 # Trending Entertainment CLI App
 
-This is a CLI gem that lists out all trending shows and movies based on the amount of people currently 'checked in' and 'watching' in real-time.
+This is a Ruby gem that lists out all trending shows and movies based on real-time check-in data from Trakt.tv. Trakt.tv users are able to "check-in" to indicate that they are watching a specific show or movie.
 
 ## Installation
 
@@ -18,10 +18,6 @@ Or install it yourself as:
 
     $ gem install trending_entertainment_cli_app
 
-## Usage
-
-TODO: Write usage instructions here
-
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
@@ -30,7 +26,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/trending_entertainment_cli_app. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/krishl/trending_entertainment_cli_app. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 
 ## License

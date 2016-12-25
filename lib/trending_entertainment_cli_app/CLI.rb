@@ -31,6 +31,10 @@ class TrendingEntertainmentCliApp::CLI
         number = gets.chomp
         if number.to_i.between?(1, 37)
           TrendingEntertainmentCliApp::Shows.selected_show_to_url(number)
+        elsif number == "back"
+          main_menu
+        elsif number == "exit"
+          farewell
         else
           puts "Please enter a valid number!"
           shows
@@ -42,6 +46,10 @@ class TrendingEntertainmentCliApp::CLI
         number = gets.chomp
         if number.to_i.between?(1, 37)
           TrendingEntertainmentCliApp::Shows.selected_show_to_url(number)
+        elsif number == "back"
+          main_menu
+        elsif number == "exit"
+          farewell
         else
           puts "Please enter a valid number!"
           shows
@@ -70,6 +78,10 @@ class TrendingEntertainmentCliApp::CLI
         number = gets.chomp
         if number.to_i.between?(1, 37)
           TrendingEntertainmentCliApp::Movies.selected_movie_to_url(number)
+        elsif number == "back"
+          main_menu
+        elsif number == "exit"
+          farewell
         else
           puts "Please enter a valid number!"
           movies
@@ -81,6 +93,10 @@ class TrendingEntertainmentCliApp::CLI
         number = gets.chomp
         if number.to_i.between?(1, 37)
           TrendingEntertainmentCliApp::Movies.selected_movie_to_url(number)
+        elsif number == "back"
+          main_menu
+        elsif number == "exit"
+          farewell
         else
           puts "Please enter a valid number!"
           movies
