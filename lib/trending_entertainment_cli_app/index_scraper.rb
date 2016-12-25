@@ -18,17 +18,19 @@ class TrendingEntertainmentCliApp::IndexScraper
   end
 
   def self.scrape_index(url)
+    puts = ""
     index = Nokogiri::HTML(open(url))
     index.css("div.titles h3").each do |element|
       individual = self.new
       individual.name = element.text.chomp.gsub(/\s\d\d\d\d$/, "")
       individual.year = element.text.chomp.split(" ")[-1]
-      individual.url = element.text.chomp.gsub(" ", "-")
+      individual.url = element.text.chomp.gsub(" ", "-").gsub("'", "-").gsub("--", "-")
     end
 
     all.each.with_index(1) do |element, index|
       puts "#{index}. #{element.name} (#{element.year})"
     end
+    puts ""
   end
 
 end
