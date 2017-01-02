@@ -26,11 +26,5 @@ class TrendingEntertainmentCliApp::IndexScraper
       individual.year = element.text.chomp.gsub("#{individual.name} ", "").gsub("#{individual.name}", "")
       individual.url = element.text.chomp.gsub(" ", "-").gsub("'", "-").gsub("--", "-")
     end
-
-    all.each.with_index(1) do |element, index|
-      puts "#{index}. #{element.name} (#{element.year})"
-    end
-    puts ""
   end
-
 end
