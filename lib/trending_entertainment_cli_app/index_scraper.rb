@@ -1,11 +1,10 @@
 class TrendingEntertainmentCliApp::IndexScraper
-  attr_accessor :name, :year, :url
+  attr_accessor :name, :year
   @@all = []
 
-  def initialize(name = nil, year = nil, url = nil)
+  def initialize(name = nil, year = nil)
     @name = name
     @year = year
-    @url = url
     @@all << self
   end
 
@@ -24,7 +23,13 @@ class TrendingEntertainmentCliApp::IndexScraper
       individual = self.new
       individual.name = element.text.chomp.gsub(/\s\d\d\d\d$/, "")
       individual.year = element.text.chomp.gsub("#{individual.name} ", "").gsub("#{individual.name}", "")
-      individual.url = element.text.chomp.gsub(" ", "-").gsub("'", "-").gsub("--", "-")
     end
+  end
+
+  def self.scrape_url(path, number)
+    index = Nokogiri::HTML(open(path))
+    count = number.to_i - 1
+    url = index.search("div.grid-item.col-sm-6 meta[itemprop='url']")[count]["content"]
+    TrendingEntertainmentCliApp::DetailsScraper.scrape_details(url)
   end
 end

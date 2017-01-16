@@ -26,15 +26,15 @@ class TrendingEntertainmentCliApp::CLI
       case answer
       when "1"
         puts "--- TRENDING TV SHOWS ---"
-        TrendingEntertainmentCliApp::Shows.all_clear
-        TrendingEntertainmentCliApp::Shows.scrape_index("https://trakt.tv/shows/trending")
-        TrendingEntertainmentCliApp::Shows.all.each.with_index(1) do |element, index|
+        TrendingEntertainmentCliApp::IndexScraper.all_clear
+        TrendingEntertainmentCliApp::IndexScraper.scrape_index("https://trakt.tv/shows/trending")
+        TrendingEntertainmentCliApp::IndexScraper.all.each.with_index(1) do |element, index|
           puts "#{index}. #{element.name} (#{element.year})"
         end
         puts "Type the number of the show for more details. Alternatively, type 'back' to go back to the main menu or 'exit' to exit."
         number = gets.chomp
         if number.to_i.between?(1, 37)
-          TrendingEntertainmentCliApp::Shows.selected_show_to_url(number)
+          TrendingEntertainmentCliApp::IndexScraper.scrape_url("https://trakt.tv/shows/trending", number)
         elsif number == "back"
           main_menu
         elsif number == "exit"
@@ -45,15 +45,15 @@ class TrendingEntertainmentCliApp::CLI
         end
       when "2"
         puts "--- MOST ANTICIPATED TV SHOWS ---"
-        TrendingEntertainmentCliApp::Shows.all_clear
-        TrendingEntertainmentCliApp::Shows.scrape_index("https://trakt.tv/shows/anticipated")
-        TrendingEntertainmentCliApp::Shows.all.each.with_index(1) do |element, index|
+        TrendingEntertainmentCliApp::IndexScraper.all_clear
+        TrendingEntertainmentCliApp::IndexScraper.scrape_index("https://trakt.tv/shows/anticipated")
+        TrendingEntertainmentCliApp::IndexScraper.all.each.with_index(1) do |element, index|
           puts "#{index}. #{element.name} (#{element.year})"
         end
         puts "Type the number of the show for more details. Alternatively, type 'back' to go back to the main menu or 'exit' to exit."
         number = gets.chomp
         if number.to_i.between?(1, 37)
-          TrendingEntertainmentCliApp::Shows.selected_show_to_url(number)
+          TrendingEntertainmentCliApp::IndexScraper.scrape_url("https://trakt.tv/shows/anticipated", number)
         elsif number == "back"
           main_menu
         elsif number == "exit"
@@ -75,21 +75,21 @@ class TrendingEntertainmentCliApp::CLI
   def movies
     answer = nil
     while answer != ("back" || "exit")
-      puts "Would you like to (1) view currently trending TV movies or (2) view a list of the most anticipated upcoming movies?"
+      puts "Would you like to (1) view currently trending movies or (2) view a list of the most anticipated upcoming movies?"
       puts "Make your selection by typing either '1' or '2'. Alternatively, type 'back' to go back to the main menu or 'exit' to exit."
       answer = gets.chomp
       case answer
       when "1"
         puts "--- TRENDING MOVIES ---"
-        TrendingEntertainmentCliApp::Movies.all_clear
-        TrendingEntertainmentCliApp::Movies.scrape_index("https://trakt.tv/movies/trending")
-        TrendingEntertainmentCliApp::Movies.all.each.with_index(1) do |element, index|
+        TrendingEntertainmentCliApp::IndexScraper.all_clear
+        TrendingEntertainmentCliApp::IndexScraper.scrape_index("https://trakt.tv/movies/trending")
+        TrendingEntertainmentCliApp::IndexScraper.all.each.with_index(1) do |element, index|
           puts "#{index}. #{element.name} (#{element.year})"
         end
         puts "Type the number of the movie for more details. Alternatively, type 'back' to go back to the main menu or 'exit' to exit."
         number = gets.chomp
         if number.to_i.between?(1, 37)
-          TrendingEntertainmentCliApp::Movies.selected_movie_to_url(number)
+          TrendingEntertainmentCliApp::IndexScraper.scrape_url("https://trakt.tv/movies/trending", number)
         elsif number == "back"
           main_menu
         elsif number == "exit"
@@ -100,15 +100,15 @@ class TrendingEntertainmentCliApp::CLI
         end
       when "2"
         puts "--- MOST ANTICIPATED MOVIES ---"
-        TrendingEntertainmentCliApp::Movies.all_clear
-        TrendingEntertainmentCliApp::Movies.scrape_index("https://trakt.tv/movies/anticipated")
-        TrendingEntertainmentCliApp::Movies.all.each.with_index(1) do |element, index|
+        TrendingEntertainmentCliApp::IndexScraper.all_clear
+        TrendingEntertainmentCliApp::IndexScraper.scrape_index("https://trakt.tv/movies/anticipated")
+        TrendingEntertainmentCliApp::IndexScraper.all.each.with_index(1) do |element, index|
           puts "#{index}. #{element.name} (#{element.year})"
         end
         puts "Type the number of the show for more details. Alternatively, type 'back' to go back to the main menu or 'exit' to exit."
         number = gets.chomp
         if number.to_i.between?(1, 37)
-          TrendingEntertainmentCliApp::Movies.selected_movie_to_url(number)
+          TrendingEntertainmentCliApp::IndexScraper.scrape_url("https://trakt.tv/movies/anticipated", number)
         elsif number == "back"
           main_menu
         elsif number == "exit"
@@ -129,14 +129,5 @@ class TrendingEntertainmentCliApp::CLI
 
   def farewell
     abort("Have a great day!")
-  end
-
-  def show_conversion_setup(number)
-    if number.to_i.between?(1, 37)
-      TrendingEntertainmentCliApp::Shows.selected_show_to_url(number)
-    else
-      puts "Please enter a valid number!"
-      shows
-    end
   end
 end
