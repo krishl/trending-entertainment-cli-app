@@ -1,6 +1,5 @@
 #!/usr/bin/env ruby
 
 require "./lib/trending_entertainment_cli_app"
-#ping me on slack on the difference between require and require_relative and when using require_relative what is it relative to?
 
 TrendingEntertainmentCliApp::CLI.new.main_menu
