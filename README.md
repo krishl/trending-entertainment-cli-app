@@ -1,6 +1,12 @@
 # Trending Entertainment CLI App
 
-This is a Ruby gem that lists out all trending shows and movies based on real-time check-in data from Trakt.tv. Trakt.tv users are able to "check-in" to indicate that they are watching a specific show or movie.
+This is a Ruby gem that lists out all currently trending shows and movies with their respective details based on real-time check-in data from Trakt.tv.
+
+A show/movie is considered "Trending" based on the total amount of people who are currently "checked in" on the show/movie's page. The "checked in" status remains for the entire length of the total runtime for the show/movie.
+
+A show/movie is considered "Most Anticipated" based on the total amount of people who have added that particular show/movie onto their "watchlist".
+
+The detail views of each show/movie include publicly available data such as title, content rating, release year, description, genre, runtime, country, and language.
 
 ## Installation
 
